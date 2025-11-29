@@ -21,7 +21,26 @@ $total = $subtotal + $tax;
     <title><?php echo $restoName; ?></title>
     <style>
         body {
-            font-family: So;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-image: url("buri.png");
+            background-size: cover;
+        }
+        .container {
+            max-width: 800px;
+            margin: 80px auto;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+        }
+        .menu-section {
+            text-align: left;
+        }
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin-left: 160px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -65,3 +84,4 @@ $total = $subtotal + $tax;
             <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
         </div>
 </body>
+
