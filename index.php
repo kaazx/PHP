@@ -1,4 +1,7 @@
-<?php 
+<?php
+// include functions file
+include 'functions.php';
+
 // variables
 $restoName = "Buri";
 
@@ -17,18 +20,25 @@ $tacos = [
 ];
 
 // sample order summary
-$orderedItem = $ramens[1]; // Tonkotsu Ramen
+$orderedCategory = "Ramens";
+$orderedIndex = 1; // Tonkotsu Ramen
 $qty = 2;
 // expressions and operations
-$subtotal = $prices[1] * $qty;
 $taxRate = 0.10;
-$tax = $subtotal * $taxRate;
-$total = $subtotal + $tax;
 
-// format for numbers
-function fm($n) {
-    return number_format($n, 2);
+// get ordered items through conditional statement
+if ($orderedCategory == "Ramens") {
+    $orderedItem = $ramens[$orderedIndex]['item'];
+    $unitPrice = $ramens[$orderedIndex]['price'];
+} else {
+    $orderedItem = $tacos[$orderedIndex]['item'];
+    $unitPrice = $tacos[$orderedIndex]['price'];
 }
+
+// expressions and operations
+$subtotal = calculateSubtotal($unitPrice, $qty);
+$tax = calculateTax($subtotal, $taxRate);
+$total = calculateTotal($subtotal, $tax);
 ?>
 
 <!DOCTYPE html>
@@ -92,15 +102,17 @@ function fm($n) {
         </div>
             
         <div class="sample-order-summary">
-            <h2>Order Summary</h2>
+            <h3>Sample Order Summary</h3>
             <p>Item Ordered: <?= $orderedItem ?></p>
             <p>Quantity: <?= $qty ?></p>
-            <p>Price per Item: $<?= $prices[1] ?></p>
-            <p>Subtotal: $<?= number_format($subtotal, 2) ?></p>
-            <p>Tax (10%): $<?= number_format($tax, 2) ?></p>
-            <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
+            <p>Price per Item: <?= fm($unitPrice) ?></p>
+            <p>Subtotal: <?= fm($subtotal) ?></p>
+            <p>Tax (10%): <?= fm($tax) ?></p>
+            <p><strong>Total: <?= fm($total) ?></strong></p>
         </div>
+    </div>
 </body>
+
 
 
 
