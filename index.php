@@ -1,12 +1,15 @@
 <?php 
+// variables
 $restoName = "Buri";
 
+// menu items and prices as arrays for easy access
 $ramens = ["Midori Ramen", "Tonkotsu Ramen", "Mala Ramen", "Shio Ramen"];
-
 $prices = [299.00, 329.00, 399.00, 429.00];
 
+// sample order summary
 $orderedItem = $ramens[1]; // Tonkotsu Ramen
 $qty = 2;
+// expressions and operations
 $subtotal = $prices[1] * $qty;
 $taxRate = 0.10;
 $tax = $subtotal * $taxRate;
@@ -19,29 +22,26 @@ $total = $subtotal + $tax;
     <meta charset="UTF-8">
     <meta name ="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $restoName; ?></title>
+    <!-- simple CSS -->
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-image: url("buri.png");
-            background-size: cover;
-        }
+            background-size: cover;}
         .container {
             max-width: 800px;
             margin: 80px auto;
             text-align: center;
             background-color: rgba(255, 255, 255, 0.5);
-            padding: 20px;
-        }
+            padding: 20px;}
         .menu-section {
-            text-align: left;
-        }
+            text-align: left;}
         table {
             width: 70%;
             border-collapse: collapse;
             margin-left: 160px;
-            margin-bottom: 10px;
-        }
+            margin-bottom: 10px;}
     </style>
 </head>
 <body>
@@ -84,4 +84,5 @@ $total = $subtotal + $tax;
             <p><strong>Total: $<?= number_format($total, 2) ?></strong></p>
         </div>
 </body>
+
 
