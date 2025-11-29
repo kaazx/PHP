@@ -23,7 +23,6 @@ $tacos = [
 $orderedCategory = "Ramens";
 $orderedIndex = 1; // Tonkotsu Ramen
 $qty = 2;
-// expressions and operations
 $taxRate = 0.10;
 
 // get ordered items through conditional statement
@@ -54,6 +53,10 @@ $total = calculateTotal($subtotal, $tax);
             margin: 0;
             background-image: url("buri.png");
             background-size: cover;}
+        h1 { font-size: 48px; }
+        h2 { font-size: 36px; }
+        h3 { font-size: 24px; }
+        p { font-size: 18px; }
         .container {
             max-width: 800px;
             margin: 80px auto;
@@ -64,8 +67,10 @@ $total = calculateTotal($subtotal, $tax);
             text-align: left;
             width: 70%;
             border-collapse: collapse;
-            margin-left: 160px;
-            margin-bottom: 10px;}
+            margin-left: 180px;
+            margin-bottom: 30px;}
+        .ramen-menu td + td { padding-left: 220px; }
+        .taco-menu td + td { padding-left: 90px; }
     </style>
 </head>
 <body>
@@ -112,6 +117,7 @@ $total = calculateTotal($subtotal, $tax);
         </div>
     </div>
 </body>
+
 
 
 
