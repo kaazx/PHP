@@ -59,7 +59,7 @@ $taxRate = 10;
             margin: 0 auto;
             margin-bottom: 50px;}
         th, td {
-            pdding: 10px 12px;
+            padding: 10px 12px;
             height: auto;
             vertical-align: middle;}
     </style>
@@ -100,11 +100,4 @@ $taxRate = 10;
         </table>
     </div>
 </body>
-
-
-
-
-
-
-
-
+</html>
