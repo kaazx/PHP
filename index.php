@@ -22,25 +22,8 @@ $tacos = [
     "Salmon Panko Taco" => ["price" => 229.00, "stock" => 14]
 ];
 
-// sample order summary
-$orderedCategory = "Ramens";
-$orderedIndex = 1; // Tonkotsu Ramen
-$qty = 2;
-$taxRate = 0.10;
-
-// get ordered items through conditional statement
-if ($orderedCategory == "Ramens") {
-    $orderedItem = $ramens[$orderedIndex]['item'];
-    $unitPrice = $ramens[$orderedIndex]['price'];
-} else {
-    $orderedItem = $tacos[$orderedIndex]['item'];
-    $unitPrice = $tacos[$orderedIndex]['price'];
-}
-
-// expressions and operations
-$subtotal = calculateSubtotal($unitPrice, $qty);
-$tax = calculateTax($subtotal, $taxRate);
-$total = calculateTotal($subtotal, $tax);
+// tax rate in percentage
+$taxRate = 10;
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +31,7 @@ $total = calculateTotal($subtotal, $tax);
 <head>
     <meta charset="UTF-8">
     <meta name ="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $restoName; ?></title>
+    <title>Buri</title>
     <!-- simple CSS -->
     <style>
         body {
@@ -81,45 +64,38 @@ $total = calculateTotal($subtotal, $tax);
         <h1><?php echo $restoName; ?></h1>
         <h2>The Menu</h2>
 
-        <div class="ramen-menu">
         <table>
             <tr>
-                <th>Ramen</th>
+                <th>Product</th>
+                <th>Stock</th>
+                <th>Re-order</th>
+                <th>Total Value</th>
+                <th>Tax Due</th>
             </tr>
-            <?php foreach($ramens as $r): ?>
-            <tr>
-                <td><?php echo $r['item']; ?></td>
-                <td><?php echo fm($r['price']); ?></td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        </div>    
-
-        <div class="taco-menu">
-        <table>
-            <tr>
-                <th>Taco Sushi</th>
-            </tr>
-            <?php foreach($tacos as $t): ?>
-            <tr>
-                <td><?php echo $t['item']; ?></td>
-                <td><?php echo fm($t['price']); ?></td>
-            </tr>
-            <?php endforeach; ?>
-        </table>
-        </div>
             
-        <div class="sample-order-summary">
-            <h3>Sample Order Summary</h3>
-            <p>Item Ordered: <?= $orderedItem ?></p>
-            <p>Quantity: <?= $qty ?></p>
-            <p>Price per Item: <?= fm($unitPrice) ?></p>
-            <p>Subtotal: <?= fm($subtotal) ?></p>
-            <p>Tax (10%): <?= fm($tax) ?></p>
-            <p><strong>Total: <?= fm($total) ?></strong></p>
-        </div>
+            <?php foreach($ramens as $ramen => $details): ?>
+            <tr>
+                <td><?= $ramen ?></td>
+                <td><?= $details['stock'] ?></td>
+                <td><?= get_reorder_message($details['stock']) ?></td>
+                <td><?= fm(get_total_value($details['price'], $details['stock'])) ?></td>
+                <td><?= fm(get_tax_due($details['price'], $details['stock'], $taxRate)) ?></td>
+            </tr>
+            <?php endforeach; ?>
+
+            <?php foreach($tacos as $taco => $details): ?>
+            <tr>
+                <td><?= $taco ?></td>
+                <td><?= $details['stock'] ?></td>
+                <td><?= get_reorder_message($details['stock']) ?></td>
+                <td><?= fm(get_total_value($details['price'], $details['stock'])) ?></td>
+                <td><?= fm(get_tax_due($details['price'], $details['stock'], $taxRate)) ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
     </div>
 </body>
+
 
 
 
