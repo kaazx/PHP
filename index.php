@@ -38,7 +38,8 @@ $taxRate = 10;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             background-image: url("buri.png");
-            background-size: cover;}
+            background-size: cover;
+            background-attachment: fixed;}
         h1 { font-size: 48px; }
         h2 { font-size: 36px; }
         h3 { font-size: 24px; }
@@ -47,16 +48,20 @@ $taxRate = 10;
             max-width: 800px;
             margin: 80px auto;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.5);
-            padding: 20px;}
+            background-color: rgba(255, 255, 255, 0.70);
+            padding: 20px;
+            overflow-y: auto;}
         table {
             text-align: left;
-            width: 70%;
+            width: 100%;
             border-collapse: collapse;
-            margin-left: 180px;
-            margin-bottom: 30px;}
-        .ramen-menu td + td { padding-left: 220px; }
-        .taco-menu td + td { padding-left: 90px; }
+            table-layout: auto;
+            margin: 0 auto;
+            margin-bottom: 50px;}
+        th, td {
+            pdding: 10px 12px;
+            height: auto;
+            vertical-align: middle;}
     </style>
 </head>
 <body>
@@ -73,28 +78,29 @@ $taxRate = 10;
                 <th>Tax Due</th>
             </tr>
             
-            <?php foreach($ramens as $ramen => $details): ?>
+            <?php foreach($ramens as $product_name => $data): ?>
             <tr>
-                <td><?= $ramen ?></td>
-                <td><?= $details['stock'] ?></td>
-                <td><?= get_reorder_message($details['stock']) ?></td>
-                <td><?= fm(get_total_value($details['price'], $details['stock'])) ?></td>
-                <td><?= fm(get_tax_due($details['price'], $details['stock'], $taxRate)) ?></td>
+                <td><?= $product_name ?></td>
+                <td><?= $data['stock'] ?></td>
+                <td><?= get_reorder_message($data['stock']) ?></td>
+                <td>₱<?= fm(get_total_value($data['price'], $data['stock'])) ?></td>
+                <td>₱<?= fm(get_tax_due($data['price'], $data['stock'], $taxRate)) ?></td>
             </tr>
             <?php endforeach; ?>
 
-            <?php foreach($tacos as $taco => $details): ?>
+            <?php foreach($tacos as $product_name => $data): ?>
             <tr>
-                <td><?= $taco ?></td>
-                <td><?= $details['stock'] ?></td>
-                <td><?= get_reorder_message($details['stock']) ?></td>
-                <td><?= fm(get_total_value($details['price'], $details['stock'])) ?></td>
-                <td><?= fm(get_tax_due($details['price'], $details['stock'], $taxRate)) ?></td>
+                <td><?= $product_name ?></td>
+                <td><?= $data['stock'] ?></td>
+                <td><?= get_reorder_message($data['stock']) ?></td>
+                <td>₱<?= fm(get_total_value($data['price'], $data['stock'])) ?></td>
+                <td>₱<?= fm(get_tax_due($data['price'], $data['stock'], $taxRate)) ?></td>
             </tr>
             <?php endforeach; ?>
         </table>
     </div>
 </body>
+
 
 
 
