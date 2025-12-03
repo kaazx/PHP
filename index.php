@@ -44,6 +44,22 @@ $taxRate = 10;
         h2 { font-size: 36px; }
         h3 { font-size: 24px; }
         p { font-size: 18px; }
+        nav {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 20px;
+            font-weight: bold;}
+        nav a:hover {color: #9b4922;}
         .container {
             max-width: 800px;
             margin: 80px auto;
@@ -65,6 +81,14 @@ $taxRate = 10;
     </style>
 </head>
 <body>
+    
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="about.php">About</a>
+        <a href="menu.php">Menu</a>
+        <a href="stock.php">Stock Control</a>
+    </nav>
+    
     <div class="container">
         <h1><?php echo $restoName; ?></h1>
         <h2>The Menu</h2>
@@ -101,3 +125,4 @@ $taxRate = 10;
     </div>
 </body>
 </html>
+
