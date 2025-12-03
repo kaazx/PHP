@@ -1,4 +1,7 @@
 <?php
+// enable strict types
+declare (strict_types=1);
+
 // include functions file
 include 'functions.php';
 
@@ -7,16 +10,16 @@ $restoName = "Buri";
 
 // menu items and prices as arrays for easy access
 $ramens = [
-    ["item" => "Miso Ramen", "price" => 299.00],
-    ["item" => "Tonkotsu Ramen", "price" => 329.00],
-    ["item" => "Mala Ramen", "price" => 399.00],
-    ["item" => "Shio Ramen", "price" => 429.00]
+    "Miso Ramen" => ["price" => 299.00, "stock" => 7],
+    "Tonkotsu Ramen" => ["price" => 329.00, "stock" => 15],
+    "Mala Ramen" => ["price" => 399.00, "stock" => 22],
+    "Shio Ramen" => ["price" => 429.00, "stock" => 8]
 ];
 $tacos = [
-    ["item" => "Crab Taco", "price" => 199.00],
-    ["item" => "EBI Tempura Taco", "price" => 199.00],
-    ["item" => "Salmon and Tuna Taco", "price" => 229.00],
-    ["item" => "Salmon Panko Taco", "price" => 229.00]
+    "Crab Taco" => ["price" => 199.00, "stock" => 9],
+    "EBI Tempura Taco" => ["price" => 199.00, "stock" => 16],
+    "Salmon and Tuna Taco" => ["price" => 229.00, "stock" => 25],
+    "Salmon Panko Taco" => ["price" => 229.00, "stock" => 14]
 ];
 
 // sample order summary
@@ -117,6 +120,7 @@ $total = calculateTotal($subtotal, $tax);
         </div>
     </div>
 </body>
+
 
 
 
